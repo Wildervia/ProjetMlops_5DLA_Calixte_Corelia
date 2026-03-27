@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+
+  mlflow:
+    image: python:3.10-slim
+    command: >
+      bash -c "pip install mlflow -q &&
+               mlflow server --host 0.0.0.0 --port 5000
+               --backend-store-uri sqlite:///mlflow.db
+               --default-artifact-root /mlflow/artifacts
+               --no-serve-artifacts"
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow_data:/mlflow
+    environment:
+      - MLFLOW_DISABLE_ENV_MANAGER_CACHE=true
+
+  training:
+    build: .
+    depends_on:
+      - mlflow
+    environment:
+      - MLFLOW_TRACKING_URI=sqlite:///mlflow.db
+    ports:
+      - "5001:5001"
+    command: >
+      bash -c "sleep 10 && python train.py --config config.yaml &&
+               mlflow ui --host 0.0.0.0 --port 5001 --backend-store-uri sqlite:///mlflow.db"
+volumes:
+  mlflow_data:

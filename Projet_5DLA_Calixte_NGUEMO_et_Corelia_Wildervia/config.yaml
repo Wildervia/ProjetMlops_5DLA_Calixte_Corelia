@@ -1,0 +1,15 @@
+data:
+  path: creditcard.csv
+training:
+  seed: 42
+
+  test_size: 0.30
+
+model:
+  n_estimators: 100
+  class_weight: balanced
+
+mlflow:
+  experiment: fraud-detection-mlops
+  run_name: RandomForest-v1
+  tracking_uri: http://mlflow:5000
