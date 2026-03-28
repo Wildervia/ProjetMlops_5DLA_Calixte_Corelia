@@ -1,0 +1,23 @@
+artifact_path: file:///c:/Users/COCO/Downloads/Projet_5DLA_Calixte_NGUEMO_et_Corelia_Wildervia/Projet_5DLA_Calixte_NGUEMO_et_Corelia_Wildervia/mlruns/1/models/m-f9d94bb3bdbb450fa4e30b63ecccaa2e/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.9
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+    skops_trusted_types: null
+mlflow_version: 3.10.1
+model_id: m-f9d94bb3bdbb450fa4e30b63ecccaa2e
+model_size_bytes: 13624724
+model_uuid: m-f9d94bb3bdbb450fa4e30b63ecccaa2e
+prompts: null
+run_id: 91b307eb1bdf4c96983055f0025d5c6f
+utc_time_created: '2026-03-28 03:07:26.984605'
